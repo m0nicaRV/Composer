@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+
 use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,19 +20,21 @@ class AddressController extends Controller
         if($validator->fails()){
             return response()->json($validator->messages(), 400);
         }
-        $id=User::where('email',$request->get('email'))->first();
+        $user=User::where('email',$request->get('email'))->firstOrFail();
 
-          if($user->address){
+        if($user->address){
             return response()->json(['message'=>'Already have an address','data'=>$user],400);
         }
+
         $address = Address::create([
             'country' => $request->get('country'),
             'zipcode' => $request->get('zipcode'),
-            'user_id' => $id['id'],
+            'user_id' => $user['id'],
 
         ]);
         return response()->json(['message'=>'Address create','data'=>$address],200);
     }
+
     public function show(Address $address){
         return response()->json(['message'=>'','data'=>$address],200);
     }

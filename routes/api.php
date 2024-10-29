@@ -26,7 +26,12 @@ Route::controller(UserController::class)->group(function(){
     Route::post('register', 'register');
     Route::get('user/{user}', 'show');
     Route::get('user/{user}/address', 'show_address');
+    /*http://127.0.0.1:8000/api/users/{id user}/events/{id event}/book --> llama al evento bookEvent de
+    la clase userController en el que relacionamos usuarios con eventos */
     Route::post('users/{user}/events/{event}/book', 'bookEvent');
+
+    /*http://127.0.0.1:8000/api/users/{id user}/events--> Llama al metodo listEvents de UserController
+    y lista los eventos que estan relacionados con el usuario */
     Route::get('user/{user}/events', 'listEvents');
 });
 
@@ -37,7 +42,12 @@ Route::controller(AddressController::class)->group(function() {
 });
 
 Route::controller(EventController::class)->group(function() {
+    /*http://127.0.0.1:8000/api/event --> llama al evento store de
+    la clase EventController en el creamos un eventos  */
     Route::post('event', 'store');
+
+    /*    /*http://127.0.0.1:8000/api/event/{id evento}/users --> llama al evento listUser de
+    la clase EventController y lista los usuarios que estan relacionados con evento  */
     Route::get('event/{event}/users', 'listUsers');
 });
 
