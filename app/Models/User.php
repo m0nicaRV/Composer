@@ -42,4 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function address(){
+        return $this->hasOne('App\Models\Address');
+    }
+
+
+    public function events()
+    {
+        return $this->belongsToMany('App\Models\Event')->withPivot('note')->withTimestamps();
+}
 }
