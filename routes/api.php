@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventTypeController;
 
 
 /*
@@ -49,6 +50,10 @@ Route::controller(EventController::class)->group(function() {
     /*    /*http://127.0.0.1:8000/api/event/{id evento}/users --> llama al evento listUser de
     la clase EventController y lista los usuarios que estan relacionados con evento  */
     Route::get('event/{event}/users', 'listUsers');
+});
+Route::controller(EventTypeController::class)->group(function() {
+    Route::get('type/{type}', 'listEvents');
+    Route::post('event/type', 'store');
 });
 
 

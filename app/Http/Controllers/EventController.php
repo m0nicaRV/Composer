@@ -20,6 +20,7 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'event_name' => 'required|string|max:255',
             'event_detail' => 'required|string|max:255',
+            'event_type_id' => 'required|exists:event_types,id',
         ]);
 
     /*2-> Condicion-> si falla la validación   */
@@ -32,6 +33,7 @@ class EventController extends Controller
        $event= Event::create([
            'event_name'=>$request->get('event_name'),
            'event_detail'=>$request->get('event_detail'),
+           'event_type_id'=>$request->get('event_type_id'),
        ]);
 
     /*4-> Devuelve un mensaje de que el evento ha sido creado y la información del evento */
