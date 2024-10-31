@@ -35,6 +35,7 @@ class UserController extends Controller{
 
     public function bookEvent(Request $request, User $user, Event $event)
     {
+        //hol
         //creamos la variable note y la inicializamos vacia
         $note = '';
 
