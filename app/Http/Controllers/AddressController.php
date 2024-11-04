@@ -12,7 +12,7 @@ class AddressController extends Controller
 {
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'country' => 'required|string|min:1|max:5',
+            'country' => 'required|string|min:1|max:255',
             'zipcode' => 'required|string|min:5|max:6',
             //'user_id' => 'required|exists:users,id',
             'email'=> 'required|string|email|max:255|exists:users,email',
