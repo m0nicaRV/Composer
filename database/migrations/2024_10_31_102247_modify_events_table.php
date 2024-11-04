@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('events', function (Blueprint $table) {
-            //$table->bigInteger('event_type_id')->unsigned();
+            $table->bigInteger('event_type_id')->unsigned();
             $table->foreign('event_type_id')->references('id')->on('event_types');
             //
         });
