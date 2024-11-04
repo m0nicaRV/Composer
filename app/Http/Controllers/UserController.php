@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Address;
 use App\Models\User;
 use App\Models\Event;
 use Illuminate\Support\Facades\Validator;
@@ -31,6 +32,12 @@ class UserController extends Controller{
     public function show(User $user)
     {
         return response()->json(['message'=>'','data'=>$user],200);
+    }
+    public function show_address(User $user)
+    {
+
+        return response()->json(['message'=>'','data'=>$user->address, ],200);
+
     }
 
     public function bookEvent(Request $request, User $user, Event $event)
